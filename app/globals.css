@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .headerLink {
+    @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3];
+  }
+
+  .bannerButton {
+    @apply flex items-center justify-center gap-x-2 rounded px-5 py-3 min-w-36 text-sm font-semibold 
+    transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl;
+  }
+}
+@layer utilities {
+  .truncate-multiline-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3; /* Ajusta el número de líneas */
+  }
+}
+
+@media (min-width: 720px) {
+  .swiper-wrapper {
+        &:hover {
+            .swiper-slide {
+                transform: translateX(-15%);
+                opacity: 0.3;
+  
+                &:hover {
+                    transform: scale(1.2) !important;
+                    z-index: 1;
+                    opacity: 1;
+  
+                    ~ .swiper-slide {
+                        transform: translateX(15%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion) {
+  .swiper-wrapper {
+    &:hover {
+        .swiper-slide {
+            transform: translateX(0);
+            opacity: 0.3;
+
+            &:hover {
+                transform: scale(1.2) !important;
+                z-index: 1;
+                opacity: 1;
+
+                ~ .swiper-slide {
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+}
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

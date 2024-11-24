@@ -23,6 +23,8 @@ const config: Config = {
             backgroundImage: {
                 'gradient-to-b':
                     'linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%)',
+                'gradientDetails':
+                    'linear-gradient(360deg, rgba(3, 3, 3, 0.8) 2%, transparent 90%)',
                 'gradient-to-t':
                     'linear-gradient(to top,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%)',
                 'movieCardGragient':

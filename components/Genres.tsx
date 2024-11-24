@@ -1,23 +1,24 @@
-import { fetchGenres } from "@/utils/fetchGenres";
-import useSWR from "swr";
+import React, { useMemo } from "react";
+import { spanGenres } from "@/utils/requestGenres";
+import { genres } from "@/data";
 
-const fetcher = (url: string)  => fetch(url).then(r => r.json());
+const Genres = React.memo(function Genres({ genreIds, isPoster }: { genreIds: number[]; isPoster: boolean }) {
+  
+  const  genresString  = useMemo(() => spanGenres({ genreIds, genres }), [genreIds]);
+  
+  const genresNumber = isPoster ? 2 : 3;
 
-export default function Genres({genreIds} : {genreIds:number[]}) {
+  return (
+    <ul className={`flex justify-center items-center w-fit gap-2 text-[11px]`}>
+      {genresString &&
+        genresString.slice(0, genresNumber).map((item, index) => (
+          <li key={index} className="flex justify-center gap-1">
+            <span>•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+    </ul>
+  );
+})
 
-    const { data:genresMovies, error:errorMovie, isLoading: isLoadingMovies } = useSWR(`https://api.themoviedb.org/3/genre/movie/list?api_key=2a8e8430bbef22eac05ac10b009857ef&language=en`, fetcher)
-    const { data:genresSeries, error:errorSerie, isLoading: isLoadingSeries } = useSWR(`https://api.themoviedb.org/3/genre/tv/list?api_key=2a8e8430bbef22eac05ac10b009857ef&language=en`, fetcher)
-    
-    const genres = isLoadingMovies || isLoadingSeries ? [] : [...genresMovies?.genres,...genresSeries?.genres];
-    const { genresString } = fetchGenres({genreIds, genres});
-
-    return (
-        <div className='flex items-center max-w-min gap-5 text-[12px]'>
-            {
-                genresString && genresString.slice(0, 3).map((item, index) => (
-                    <span key={index}>{item}</span>
-                ))
-            }
-        </div>
-    )
-}
+export default Genres;

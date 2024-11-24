@@ -1,11 +1,8 @@
 'use client'
 import Banner from "@/components/Banner";
-// import MovieData from "@/components/MovieData";
 import { MyDataLoader, MyLoader } from "@/skeletons/BannerSkeleton";
 import { movieProps } from "@/types";
 import dynamic from "next/dynamic";
-// import { useRef } from "react";
-
 
 const DynamicRow = dynamic(() => import("@/components/PopularNow"),
   {

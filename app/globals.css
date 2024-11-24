@@ -20,6 +20,47 @@
     text-overflow: ellipsis;
     -webkit-line-clamp: 3; /* Ajusta el número de líneas */
   }
+  .content-visibility {
+    content-visibility: auto;
+  }
+  .contain {
+    contain: paint;
+  }
+
+  .scroller::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+    height: 8px; /* Altura para scroll horizontal, si aplica */
+  }
+  
+  .scroller::-webkit-scrollbar-track {
+    background: transparent; /* Oculta el track */
+  }
+  
+  .scroller::-webkit-scrollbar-thumb {
+    background: #A9A9A9; /* Estilo de la barra de desplazamiento */
+    border-radius: 6px; /* Opcional: redondear la barra */
+  }
+  
+  .scroller::-webkit-scrollbar-button {
+    display: none; /* Oculta las flechas */
+  }
+}
+
+.movie-card-details {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 0%, transparent 65%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    opacity: 1;
+  }
 }
 
 @media (min-width: 720px) {

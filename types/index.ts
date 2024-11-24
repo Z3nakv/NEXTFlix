@@ -12,6 +12,20 @@ export type movieProps = {
     vote_average: number
     original_language: string
     adult: boolean
+    name:string
+    runtime?:number
+}
+
+export type popularProps =  {
+    adult: false,
+    gender: number
+    id: number
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string
+    known_for: movieProps[]
 }
 
 export type genresProps = {

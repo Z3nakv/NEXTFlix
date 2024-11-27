@@ -12,8 +12,9 @@ type RowProps = {
 export default function Row({ title, movies }: RowProps) {
     
     return (
+        movies.length > 0 &&
         <div 
-        className="px-4 md:px-12 animate-dataFadeInUp content-visibility">
+        className="px-4 md:px-12 animate-dataFadeInUp">
             <h2 className="text-xl text-white font-bold mb-4">{title}</h2>
             <SliderContainer movies={movies} />
         </div>

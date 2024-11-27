@@ -1,4 +1,5 @@
 'use client'
+import useWindowSize from "@/hooks/useWindowSize";
 import { usebackgroundIndex } from "@/store";
 import { movieProps } from "@/types";
 import Image from "next/image";
@@ -8,8 +9,11 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
   const { backgroundIndex } = usebackgroundIndex();
   const backgroundImage = movies[+backgroundIndex];
 
+  const { screenWidth } = useWindowSize();
+  const isMobile = screenWidth < 800;
+
   const imageProps =
-  type === 'Trending Now' 
+  type === 'Trending Now'
   ? { priority: true as const }
   : { loading: "lazy" as const } 
 
@@ -34,7 +38,7 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                     width:'100%',
                     objectFit:'cover'
                   }}
-                  {...imageProps}
+                  {...(!isMobile && imageProps)}
                 />
                 <Image
                 src={`https://image.tmdb.org/t/p/w780${backgroundImage?.poster_path}`}
@@ -48,6 +52,7 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                   width:'100%',
                   objectFit:'cover'
                 }}
+                {...(isMobile && imageProps)}
                 />
               </>
         }

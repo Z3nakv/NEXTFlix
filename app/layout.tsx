@@ -4,6 +4,8 @@ import MovieCardModal from "@/components/modal/MovieCardModal";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import Trailer from "@/components/Trailer";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,10 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable}select-none h-screen mx-auto antialiased overflow-x-hidden bg-[#141414] grid grid-cols-1`}
       >
-        <Navbar />
-        {children}
-        <MovieCardModal />
-        <Footer />
+        
+          <Navbar />
+          {children}
+          <MovieCardModal />
+          <Trailer />
+          <Footer />
+        
       </body>
     </html>
   );

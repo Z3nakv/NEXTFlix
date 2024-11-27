@@ -26,7 +26,8 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
         if (screenWidth >= 1024) return 12
         return 10
     }, [screenWidth])
-
+    // console.log(movies);
+    
     return (
         <div>
             <Swiper
@@ -42,7 +43,7 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
                 {
                     movies &&
                     movies.slice(0,showMovies).map((trendingMovie) => (
-                        trendingMovie.backdrop_path || trendingMovie.still_path ?
+                        
                         <SwiperSlide
                             key={trendingMovie.id}
                             className={`!transition !duration-300 overflow-hidden !w-auto mr-2.5`}
@@ -54,7 +55,6 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
                                     title={trendingMovie.title}
                                 />
                         </SwiperSlide>
-                        : null
                     ))
                 }
             </Swiper>

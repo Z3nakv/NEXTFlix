@@ -1,13 +1,13 @@
 'use client'
 import Banner from "@/components/Banner";
-import { MyDataLoader, MyLoader } from "@/skeletons/BannerSkeleton";
+import { MyDataLoader, NetflixLoader } from "@/skeletons/BannerSkeleton";
 import { movieProps } from "@/types";
 import dynamic from "next/dynamic";
 
 const DynamicRow = dynamic(() => import("@/components/PopularNow"),
   {
     ssr: false,
-    loading: () => <MyLoader />,
+    loading: () => <NetflixLoader />,
   }
 )
 const DynamicMovieData = dynamic(() => import("@/components/MovieData"),

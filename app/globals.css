@@ -4,7 +4,8 @@
 
 @layer components {
   .headerLink {
-    @apply cursor-pointer text-sm font-light text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3];
+    @apply cursor-pointer text-xl font-bold text-[#e5e5e5] transition duration-[.4s] hover:text-[#b3b3b3]
+    ;
   }
 
   .bannerButton {
@@ -27,6 +28,17 @@
     contain: paint;
   }
 
+  .text-shadow {
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 14px black; /* Sombras del texto */
+  }
+
+  .page-transition {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(12px);
+  }
+
   .scroller::-webkit-scrollbar {
     width: 8px; /* Ancho de la barra de desplazamiento */
     height: 8px; /* Altura para scroll horizontal, si aplica */
@@ -44,6 +56,46 @@
   .scroller::-webkit-scrollbar-button {
     display: none; /* Oculta las flechas */
   }
+
+  .selectOptions {
+    appearance: none; /* Elimina el estilo predeterminado del navegador */
+    -webkit-appearance: none; /* Para Safari */
+    -moz-appearance: none; /* Para Firefox */
+    background-color: #333333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    font-size: 1rem; /* Tamaño de fuente moderado */
+    font-weight: 600; /* Hacer que el texto sea más destacado */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid #666; /* Borde gris claro */
+    width: 200px; /* Ancho ajustable */
+    cursor: pointer; /* Puntero de selección */
+    outline: none; /* Eliminar el contorno al enfocar */
+    transition: background-color 0.3s, border-color 0.3s; /* Suavizar transiciones */
+}
+
+.selectOptions:hover {
+    background-color: #444; /* Fondo más claro al pasar el mouse */
+    border-color: #fff; /* Borde blanco en hover */
+}
+
+.selectOptions:focus {
+    background-color: #222; /* Fondo aún más oscuro al enfocarse */
+    border-color: #ff0000; /* Borde rojo al enfocar (opcional, o puedes usar blanco) */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Efecto de sombra */
+}
+
+.selectOptions option {
+    background-color: #333; /* Fondo oscuro para las opciones */
+    color: #fff; /* Texto blanco */
+    font-size: 1rem; /* Tamaño de texto similar */
+    padding: 10px; /* Espaciado de las opciones */
+    border: none; /* Sin borde para las opciones */
+}
+
+.selectOptions option:hover {
+    background-color: #555; /* Fondo más claro al pasar el mouse sobre las opciones */
+}
 }
 
 .movie-card-details {
@@ -61,6 +113,20 @@
     transition: opacity 0.2s ease-out;
     opacity: 1;
   }
+
+  /* .page-transition {
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+  }
+  
+  .page-transition.transition-in {
+    opacity: 1;
+  }
+  
+  .page-transition.transition-out {
+    opacity: 0;
+  } */
+   
 }
 
 @media (min-width: 720px) {
@@ -122,4 +188,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
 }

@@ -5,6 +5,7 @@ import { create } from "zustand";
 type backgroundIndexProps = {
     movies: movieProps[]
     openModal: [boolean, movieProps]
+    openTrailerModal: boolean
     topRatedSeries: movieProps[]
     topRatedMovies: movieProps[]
     NEXTFlixOriginals: movieProps[]
@@ -14,6 +15,7 @@ type backgroundIndexProps = {
     backgroundIndex: string | 0
     genresMoviesSeries: genresProps[]
     setOpenModal: (value:boolean, movie:movieProps) => void
+    setOpenTrailerModal: (value:boolean) => void
     setMovies: (m: movieProps[] | genresProps[], key: string) => void
     setBackgroundIndex: (index: string | null) => void
     getData: (key:'movies' | 'topRatedMovies' | 'topRatedSeries' | 'NEXTFlixOriginals' | 'actionMovies' | 'comedyMovies' | 'horrorMovies' | 'romanceMovies' | 'documentaryMovies') => movieProps[]
@@ -23,6 +25,7 @@ type backgroundIndexProps = {
 export const usebackgroundIndex = create<backgroundIndexProps>((set, get) => ({
     movies: [],
     openModal: [false, {} as movieProps],
+    openTrailerModal: false,
     topRatedSeries: [],
     topRatedMovies: [],
     NEXTFlixOriginals: [],
@@ -43,6 +46,9 @@ export const usebackgroundIndex = create<backgroundIndexProps>((set, get) => ({
         set({
             openModal: [value, movie]
         });
+    },
+    setOpenTrailerModal: (value:boolean) => {
+        set({openTrailerModal:value})
     },
     getData: (key) => get()[key],
     getGenreData: () => get()['genresMoviesSeries']

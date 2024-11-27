@@ -17,24 +17,24 @@ export default function MovieCardModal() {
     const age_rate = movieInfo?.adult ? 'Only Adults' : 'For all public';
 
     const handleCloseModal = () => setOpenModal(false, {} as movieProps)
-    
-    
+
+
     return (
         openModal[0] && (
-            <div 
-            className={`h-screen w-screen bg-[#141414] bg-opacity-60 fixed inset-0 z-50`}
-            onClick={handleCloseModal}
-            aria-hidden="true"
+            <div
+                className={`h-screen w-screen bg-[#141414] bg-opacity-60 fixed inset-0 z-[100]`}
+                onClick={handleCloseModal}
+                aria-hidden="true"
             >
-                <div 
-                className={`bg-[#181818] rounded-lg absolute left-[48%] top-[50%] text-white w-[90vw] max-w-[750px] overflow-hidden transition duration-1000 z-[80] animate-fadeInUp`}
-                onClick={(e) => e.stopPropagation()}
-                role="dialog"
-                aria-modal="true"
+                <div
+                    className={`bg-[#181818] rounded-lg absolute left-[48%] top-[50%] text-white w-[90vw] max-w-[750px] overflow-hidden transition duration-1000 z-[80] animate-fadeInUp`}
+                    onClick={(e) => e.stopPropagation()}
+                    role="dialog"
+                    aria-modal="true"
                 >
                     <div className='block relative'>
                         <Image
-                            src={`https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path}`}
+                            src={`https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path ? movieInfo?.backdrop_path : movieInfo?.still_path}`}
                             alt='movie'
                             height={282}
                             width={500}
@@ -62,28 +62,43 @@ export default function MovieCardModal() {
                         <p className='text-sm'>{movieInfo?.overview}</p>
                         <h4>Movie details: <span className='font-bold'>{movieInfo?.title}</span></h4>
                         <div className='text-[12px] flex flex-col gap-1'>
-                            <div>
-                                <span className='text-[#777]'>Genres: </span>
-                                <span>
-                                    <Genres genreIds={movieInfo.genre_ids} />
-                                </span>
-                            </div>
-                            <div>
-                                <span className='text-[#777]'>Release Date: </span>
-                                <span>{movieInfo?.release_date}</span>
-                            </div>
-                            <div >
-                                <span className='text-[#777]'>Average Vote: </span>
-                                <span>{movieInfo?.vote_average}</span>
-                            </div>
-                            <div>
-                                <span className='text-[#777]'>Language: </span>
-                                <span>{movieInfo?.original_language}</span>
-                            </div>
-                            <div>
-                                <span className='text-[#777]'>Age Rate: </span>
-                                <span>{age_rate}</span>
-                            </div>
+                            {
+                                movieInfo.genre_ids &&
+                                <div>
+                                    <span className='text-[#777]'>Genres: </span>
+                                    <span>
+                                        <Genres genreIds={movieInfo.genre_ids} />
+                                    </span>
+                                </div>
+                            }
+                            {
+                                movieInfo.release_date || movieInfo.air_date &&
+                                <div>
+                                    <span className='text-[#777]'>{movieInfo.release_date ? 'Release Date: ' : 'Air Date: '}</span>
+                                    <span>{movieInfo?.release_date ? movieInfo.release_date : movieInfo.air_date}</span>
+                                </div>
+                            }
+                            {
+                                movieInfo.vote_average &&
+                                <div >
+                                    <span className='text-[#777]'>Average Vote: </span>
+                                    <span>{movieInfo?.vote_average}</span>
+                                </div>
+                            }
+                            {
+                                movieInfo.original_language &&
+                                <div>
+                                    <span className='text-[#777]'>Language: </span>
+                                    <span>{movieInfo?.original_language}</span>
+                                </div>
+                            }
+                            {
+                                age_rate &&
+                                <div>
+                                    <span className='text-[#777]'>Age Rate: </span>
+                                    <span>{age_rate}</span>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

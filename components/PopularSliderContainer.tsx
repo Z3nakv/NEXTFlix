@@ -1,4 +1,4 @@
-
+'use client'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css'
@@ -19,6 +19,15 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
         if (screenWidth >= 1024) return 12
         return 10
     }, [screenWidth])
+
+    const lazyMovies = useMemo(() => {
+        if (screenWidth >= 1800) return 8;
+        if (screenWidth >= 1500) return 7;
+        if (screenWidth >= 1200) return 6;
+        if (screenWidth >= 1024) return 5;
+        if (screenWidth >= 800) return 4;
+        return 3;
+    }, [screenWidth]);
     
     const breakpoints = {
         300: { slidesPerView: 2, spaceBetween: 10 },
@@ -29,7 +38,7 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
         1500: { slidesPerView: 7, spaceBetween: 10 },
         1800: { slidesPerView: 8, spaceBetween: 10 },
     }
-
+    
     return (
         <Swiper
             observer={true}
@@ -47,7 +56,7 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
         >
             {
                     popularMovies &&
-                    popularMovies?.slice(0, showMovies).map((trendingMovie) => (
+                    popularMovies?.slice(0, showMovies).map((trendingMovie, index) => (
                         <SwiperSlide
                             key={trendingMovie.id}
                             className={`!transition !duration-300`}
@@ -57,6 +66,8 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
                                     movie={trendingMovie}
                                     image={trendingMovie.poster_path}
                                     title={title}
+                                    index={index}
+                                    showMovies={lazyMovies}
                                 />
                         </SwiperSlide>
                     ))

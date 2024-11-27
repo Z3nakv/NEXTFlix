@@ -1,11 +1,11 @@
 'use client'
-import { MyMovieLoader } from "@/skeletons/BannerSkeleton";
+import { Youtube } from "@/skeletons/BannerSkeleton";
 import { movieProps } from "@/types";
 import { fetchTopRatedData } from "@/utils/fecthData";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-const DynamicRow = dynamic(() => import("@/components/Row"),{ssr:false, loading:() => <MyMovieLoader />});
+const DynamicRow = dynamic(() => import("@/components/Row"),{ssr:false, loading:() => <Youtube />});
 
 export function LazyRow({ title, path, params }: { title: string, path:string, params:string }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,18 +36,15 @@ export function LazyRow({ title, path, params }: { title: string, path:string, p
 
   useEffect(() => {
       async function requestData(){
-        if (isVisible && movies.length === 0) {
-        // fetch(`https://api.themoviedb.org/3/${path}?api_key=2a8e8430bbef22eac05ac10b009857ef&language=en-US&page=1${params}`)
-        //   .then((response) => response.json())
-        //   .then((data) => setMovies(data.results || []))
-        //   .catch((err) => console.error("Error fetching movies:", err));
+        if (isVisible && movies?.length === 0) {
         const response = await fetchTopRatedData(path, params);
+        console.log(response);
         
-        setMovies(response.results ? response.results : response.episodes)
+        setMovies(response.results ? response.results : response.episodes ? response.episodes : response.cast)
         }
       }
       requestData()
-  }, [isVisible, path, params, movies.length]);
+  }, [isVisible, path, params, movies?.length]);
   return (
     <div ref={rowRef}>
       {isVisible ? <DynamicRow title={title} movies={movies} /> : null}

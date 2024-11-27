@@ -2,34 +2,76 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-export const MyLoader = (props) => (
-    <ContentLoader 
-    speed={2}
-    width={400}
-    height={400}
-    viewBox="0 0 350 272"
-    backgroundColor="#3d3d3d"
-    foregroundColor="#e7dfdf"
-    {...props}
-  >
-    <rect x="539" y="403" rx="3" ry="3" width="67" height="11" /> 
-    <rect x="581" y="402" rx="3" ry="3" width="140" height="11" /> 
-    <rect x="551" y="411" rx="3" ry="3" width="53" height="11" /> 
-    <rect x="568" y="402" rx="3" ry="3" width="72" height="11" /> 
-    <rect x="549" y="405" rx="3" ry="3" width="100" height="11" /> 
-    <rect x="549" y="413" rx="3" ry="3" width="37" height="11" /> 
-    <rect x="564" y="407" rx="3" ry="3" width="140" height="11" /> 
-    <rect x="556" y="411" rx="3" ry="3" width="173" height="11" /> 
-    <rect x="576" y="405" rx="0" ry="0" width="14" height="157" /> 
-    <rect x="569" y="409" rx="0" ry="0" width="32" height="5" /> 
-    <rect x="560" y="400" rx="0" ry="0" width="45" height="135" /> 
-    <rect x="547" y="391" rx="0" ry="0" width="142" height="136" /> 
-    <rect x="557" y="343" rx="0" ry="0" width="76" height="94" /> 
-    <rect x="3" y="1" rx="0" ry="0" width="180" height="270" /> 
-    <rect x="209" y="-1" rx="0" ry="0" width="180" height="270" />
-  </ContentLoader>
+// export const MyLoader = (props) => (
+//   <ContentLoader
+//   speed={2}
+//   width="100%" // Ajustamos el ancho para que ocupe todo el espacio disponible
+//   height={340}
+//   viewBox="0 0 1000 340"
+//   backgroundColor="#3d3d3d"
+//   foregroundColor="#e7dfdf"
+//   {...props}
+// >
+//   {/* Simulando una estructura flexible con varias imágenes */}
+//   <rect x="0%" y="11" rx="8" ry="8" width="45%" height="340" /> {/* Primera imagen */}
+//   <rect x="50%" y="11" rx="8" ry="8" width="45%" height="340" /> {/* Segunda imagen */}
+//   <rect x="45%" y="14" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Tercera imagen */}
+//   <rect x="65%" y="13" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Cuarta imagen */}
+//   <rect x="85%" y="11" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Quinta imagen */}
+//   <rect x="85%" y="11" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Quinta imagen */}
+//   <rect x="85%" y="11" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Quinta imagen */}
+//   <rect x="85%" y="11" rx="8" ry="8" width="15%" height="188" className="hidden"/> {/* Quinta imagen */}
 
-)
+// </ContentLoader>
+
+// )
+
+export const NetflixLoader = props => {
+  // Get values from props
+  // const { rows, columns, coverHeight, coverWidth, padding, speed } = props;
+
+  // Hardcoded values
+  const rows = 1
+  const columns = 8
+  const coverHeight = 350
+  const coverWidth = 220
+  const padding = 12
+  const speed = 2
+
+  const coverHeightWithPadding = coverHeight + padding
+  const coverWidthWithPadding = coverWidth + padding
+  const initial = 35
+  const covers = Array(columns * rows).fill(1)
+
+  return (
+    <ContentLoader
+      speed={speed}
+      width={columns * coverWidthWithPadding}
+      height={rows * coverHeightWithPadding}
+      
+      backgroundColor="#3d3d3d"
+      foregroundColor="#e7dfdf"
+      {...props}
+    >
+
+      {covers.map((g, i) => {
+        let vy = Math.floor(i / columns) * coverHeightWithPadding + initial
+        let vx = (i * coverWidthWithPadding) % (columns * coverWidthWithPadding)
+        return (
+          <rect
+            key={i}
+            x={vx}
+            y={vy}
+            rx="0"
+            ry="0"
+            width={coverWidth}
+            height={coverHeight}
+          />
+        )
+      })}
+    </ContentLoader>
+  )
+}
 
 export const MyDataLoader = (props) => (
     <ContentLoader 
@@ -55,7 +97,7 @@ export const MyDataLoader = (props) => (
 export const MyMovieLoader = (props) => (
   <ContentLoader 
     speed={2}
-    width={476}
+    width={'100%'}
     height={200}
     viewBox="0 0 476 200"
     backgroundColor="#3d3d3d"
@@ -64,8 +106,29 @@ export const MyMovieLoader = (props) => (
   >
     <rect x="201" y="164" rx="0" ry="0" width="1" height="0" /> 
     <rect x="28" y="17" rx="0" ry="0" width="342" height="196" />
+    <rect x="28" y="17" rx="0" ry="0" width="342" height="196" />
+    <rect x="28" y="17" rx="0" ry="0" width="342" height="196" />
+    <rect x="28" y="17" rx="0" ry="0" width="342" height="196" />
   </ContentLoader>
 )
+
+export const Youtube = props => (
+  <ContentLoader 
+  // viewBox="0 0 900 507" 
+  height={507} 
+  width={'100%'} 
+  backgroundColor="#3d3d3d"
+  foregroundColor="#e7dfdf" 
+  {...props}
+  >
+    <rect x="50" y="60" rx="0" ry="0" width="330" height="180" />
+    <rect x="400" y="60" rx="0" ry="0" width="330" height="180" />
+    <rect x="750" y="60" rx="0" ry="0" width="330" height="180" />
+    <rect x="1100" y="60" rx="0" ry="0" width="330" height="180" />
+
+  </ContentLoader>
+)
+
 
 
 

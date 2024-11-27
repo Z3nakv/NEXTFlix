@@ -3,17 +3,26 @@ import Image from "next/image"
 import { movieProps } from "@/types";
 import MovieCardDetails from "./MovieCardDetails";
 import { useMemo } from "react";
+import nextflixLogo from '../public/nextflixLogo.jpg'
 
-export default function TrendingMovie({ movie, image, title }: { movie: movieProps, image: string, title: string }) {
+type trendingMovieProps = {
+  movie: movieProps
+  image: string
+  title: string
+  index:number
+  showMovies:number
+}
+
+export default function TrendingMovie({ movie, image, title, index, showMovies }:  trendingMovieProps ) {
   // const isFavorite = true;
-
+  
   const genreIds = useMemo(() => movie.genre_ids, [movie.genre_ids]);
   const imageProps = useMemo(
     () =>
-      title === "Trending Now"
+      (title === "Trending Now" || movie.air_date) && index+1 <= showMovies
         ? { priority: true as const }
         : { loading: "lazy" as const },
-    [title]
+    [title, index, showMovies, movie.air_date]
   );
 
   const imageStyles = useMemo(() => {
@@ -24,8 +33,10 @@ export default function TrendingMovie({ movie, image, title }: { movie: moviePro
   }, [movie.poster_path, image]);
 
   const isPoster = useMemo(() => movie.poster_path === image, [movie.poster_path, image]);
-  // console.log(movie);
 
+  const url = movie.poster_path || movie.backdrop_path || movie.still_path 
+  ? `https://image.tmdb.org/t/p/${isPoster ? "original" : "w780"}${isPoster ? movie.poster_path : movie.backdrop_path ? movie.backdrop_path : movie.still_path}`
+  : nextflixLogo.src
   return (
     <div
       className={`cursor-pointer relative text-[#f2f2f2] overflow-hidden rounded-lg group contain ${imageStyles}`}
@@ -36,9 +47,8 @@ export default function TrendingMovie({ movie, image, title }: { movie: moviePro
         style={{ willChange: "opacity" }}
       ></div>
       <Image
-        src={`https://image.tmdb.org/t/p/${isPoster ? "original" : "w780"
-          }${isPoster ? movie.poster_path : movie.backdrop_path ? movie.backdrop_path : movie.still_path}`}
-        alt={movie.title || "Movie Image"}
+        src={url}
+        alt={movie.title || movie.name || "Movie Image"}
         height={isPoster ? 380 : 282}
         width={isPoster ? 250 : 500}
         className="block object-cover rounded-lg"

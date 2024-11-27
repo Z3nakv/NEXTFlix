@@ -4,7 +4,7 @@ export type movieProps = {
     original_title: string
     overview: string
     poster_path: string
-    release_date: string
+    release_date?: string
     title: string
     original_name?: string
     genre_ids: number[]
@@ -14,6 +14,11 @@ export type movieProps = {
     adult: boolean
     name:string
     runtime?:number
+    still_path: string
+    episode_number?: string
+    first_air_date?: string
+    seasons: object[]
+    air_date?: string
 }
 
 export type popularProps =  {

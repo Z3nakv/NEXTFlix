@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { LazyRow } from './LazyRow';
-import { movieProps } from '@/types';
+import { movieProps, seasonsProps } from '@/types';
 
 type SeasonSelectType = {
     result: movieProps;
@@ -11,7 +11,9 @@ type SeasonSelectType = {
 
 export default function SeasonSelect({ result, mediaId, mediaType }: SeasonSelectType) {
     // Filtrar temporadas válidas, excluyendo "Specials"
-    const validSeasons = result.seasons?.filter((season) => season.name.toLowerCase() !== 'specials') || [];
+    const seasons : seasonsProps[] = result?.seasons;
+    
+    const validSeasons = seasons?.filter((season) => season.name.toLowerCase() !== 'specials') || [];
     
     // Estado para la temporada seleccionada, comenzando con la primera temporada válida
     const [selectedSeason, setSelectedSeason] = useState(validSeasons[0]?.season_number || 1);

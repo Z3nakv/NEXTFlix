@@ -6,18 +6,23 @@ type MovieImagesType = {
     mediaId: string
 }
 
+type responseImageProps = {
+    file_path: string
+}
+
 export default async function movieImages({mediaType, mediaId} : MovieImagesType) {
 
     const images = await fetch(`https://api.themoviedb.org/3/${mediaType}/${mediaId}/images?api_key=${process.env.NEXT_PUBLIC_API_KEY_2}`)
     const responseImages = await images.json();
+    const imagesPosters : responseImageProps[] = responseImages.backdrops; 
   return (
     <>
         {
-            responseImages.backdrops ?
+            imagesPosters ?
                 <div>
                     <h2 className="text-lg font-bold">Posters</h2>
                     <div className="flex w-auto gap-4 overflow-auto scroller p-2 bg-[#141414] rounded-lg my-2">
-                        {responseImages.backdrops.slice(0, 8).map((poster, index) => (
+                        {imagesPosters.slice(0, 8).map((poster, index) => (
                             <div key={index} className="h-[150px] w-[220px] flex-shrink-0 overflow-hidden rounded-md bg-black">
                                 <Image
                                     src={`https://image.tmdb.org/t/p/w500${poster.file_path}`}

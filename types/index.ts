@@ -17,7 +17,7 @@ export type movieProps = {
     still_path: string
     episode_number?: string
     first_air_date?: string
-    seasons: object[]
+    seasons: seasonsProps[]
     air_date?: string
     genres: genresProps[]
 }
@@ -37,4 +37,24 @@ export type popularProps =  {
 export type genresProps = {
     id: number
     name: string
+}
+
+export type actorPoster = {
+    id: number
+    profile_path:string
+    name: string
+}
+
+export type viewersReviews = {
+    author: string
+    author_details: {
+        avatar_path:string
+    }
+    content: string
+}
+
+export type seasonsProps = {
+    name: string
+    season_number: number
+    id: number
 }

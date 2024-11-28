@@ -67,7 +67,7 @@ export default function MovieCardModal() {
                                 <div>
                                     <span className='text-[#777]'>Genres: </span>
                                     <span>
-                                        <Genres genreIds={movieInfo.genre_ids} />
+                                        <Genres genreIds={movieInfo.genre_ids} isPoster={false} />
                                     </span>
                                 </div>
                             }

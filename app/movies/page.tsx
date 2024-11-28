@@ -13,16 +13,6 @@ export default async function MoviesPage() {
 
   const fetchConfigurations = [
     { path: 'trending/movie/day', params:'include_adult=false&include_video=false' },
-    // { path: 'movie/upcoming', params: '' },
-    // { path: 'discover/movie', params: '&with_genres=16' },
-    // { path: 'discover/movie', params: '&with_genres=14' },
-    // { path: 'movie/top_rated', params: '' },
-    // { path: 'discover/movie', params: 'include_adult=false&include_video=false' },
-    // { path: 'discover/movie', params: '&with_genres=28' },
-    // { path: 'discover/movie', params: '&with_genres=35' },
-    // { path: 'discover/movie', params: '&with_genres=27' },
-    // { path: 'discover/movie', params: '&with_genres=10749' },
-    // { path: 'discover/movie', params: '&with_genres=99' },
   ];
   
   const [
@@ -33,16 +23,6 @@ export default async function MoviesPage() {
   
   const [
     popularNow,
-    // upcoming,
-    // animation,
-    // fantasy,
-    // topRatedMovies,
-    // Discover,
-    // action,
-    // comedy,
-    // horror,
-    // romance,
-    // documentary
   ] = fetchedData;
 
   return (

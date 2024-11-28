@@ -13,16 +13,6 @@ export default async function TvShows() {
 
   const fetchConfigurations = [
     { path: 'trending/tv/day', params: ''},
-    // { path: 'discover/tv', params: '&with_genres=10764' },
-    // { path: 'tv/top_rated', params: '' },
-    // { path: 'discover/tv', params: '&with_genres=16' },
-    // { path: 'discover/tv', params: '&with_genres=80' },
-    // { path: 'discover/tv', params: 'include_adult=false&include_video=false' },
-    { path: 'discover/tv', params: '&with_genres=9648' },
-    // { path: 'discover/tv', params: '&with_genres=35' },
-    // { path: 'discover/tv', params: '&with_genres=10759' },
-    // { path: 'discover/tv', params: '&with_genres=10749' },
-    // { path: 'discover/tv', params: '&with_genres=99' },
   ];
   
   const [
@@ -33,16 +23,6 @@ export default async function TvShows() {
   
   const [
     popularNow,
-    // reality,
-    // topRatedSeries,
-    // animation,
-    // crime,
-    // discover,
-    // mistery,
-    // comedy,
-    // actionAndAdventure,
-    // romance,
-    // documentary
   ] = fetchedData;
 
   return (

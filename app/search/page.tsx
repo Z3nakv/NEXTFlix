@@ -22,6 +22,8 @@ export default async function page({ searchParams }: { searchParams: SearchParam
                                     movie={item}
                                     image={item.backdrop_path}
                                     title=""
+                                    index={0}
+                                    showMovies={1}
                                 />
                             ))
                         }

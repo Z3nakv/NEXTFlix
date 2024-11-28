@@ -27,8 +27,6 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                 <Image
                   src={`https://image.tmdb.org/t/p/original${backgroundImage?.backdrop_path}`}
                   alt={`${backgroundImage?.title || backgroundImage?.name}`}
-                  // fill
-                  // sizes='100vw'
                   quality={100}
                   height={1080}
                   width={1920}
@@ -45,7 +43,7 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                 alt={`${backgroundImage?.title || backgroundImage?.original_name}`}
                 className={'saturate-[1.2] scrollMove object-cover md:hidden bg-no-repeat'}
                 fill
-                sizes='100vw'
+                sizes='80vw'
                 quality={100}
                 style={{
                   height:'100%',

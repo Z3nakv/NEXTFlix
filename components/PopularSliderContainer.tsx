@@ -21,11 +21,11 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
     }, [screenWidth])
 
     const lazyMovies = useMemo(() => {
-        if (screenWidth >= 1800) return 8;
-        if (screenWidth >= 1500) return 7;
-        if (screenWidth >= 1200) return 6;
-        if (screenWidth >= 1024) return 5;
-        if (screenWidth >= 800) return 4;
+        if (screenWidth >= 1500) return 8;
+        if (screenWidth >= 1200) return 7;
+        if (screenWidth >= 1024) return 6;
+        if (screenWidth >= 800) return 5;
+        if (screenWidth >= 600) return 4;
         return 3;
     }, [screenWidth]);
     

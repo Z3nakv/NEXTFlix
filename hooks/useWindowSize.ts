@@ -7,6 +7,9 @@ export default function useWindowSize() {
         const handleResize = () => {
             setScreenWidth(document.documentElement.clientWidth);
         }
+        
+        handleResize();
+
         window.addEventListener('resize' , handleResize)
 
         return () => window.removeEventListener('resize', handleResize)

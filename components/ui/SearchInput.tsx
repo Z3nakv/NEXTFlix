@@ -25,7 +25,7 @@ export default function SearchInput() {
 
         // Actualiza la URL solo si hay un cambio en el valor del input
         if (search !== '') {
-            replace(`search?${params.toString()}`);
+            replace(`/search?${params.toString()}`);
         }
     };
 

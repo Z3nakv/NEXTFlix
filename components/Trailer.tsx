@@ -3,11 +3,14 @@ import { usebackgroundIndex } from '@/store';
 import { fetchTopRatedData } from '@/utils/fecthData';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import ReactPlayer from 'react-player';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function Trailer() {
     const openTrailerModal = usebackgroundIndex((state) => state.openTrailerModal);
     const setOpenTrailerModal = usebackgroundIndex((state) => state.setOpenTrailerModal);
     const params = useParams();
+    const [miniReproductor, setMiniReproductor] = useState(false);
 
     const id = params?.id;
     let mediaId, mediaType;
@@ -44,30 +47,52 @@ export default function Trailer() {
     if (!openTrailerModal) return null;
 
     const handleCloseModal = () => {
-      setOpenTrailerModal(false);
+        // setOpenTrailerModal(false);
+        setMiniReproductor(true);
     }
 
     return (
-        <div 
-        className='fixed h-screen grid place-content-center w-full z-50 inset-0 bg-black bg-opacity-40'
-        onClick={handleCloseModal}
+        <div
+            className={`fixed h-screen grid place-content-center w-full z-[100] inset-0 bg-black bg-opacity-40  ${miniReproductor ? 'h-0' : ''} group`}
+            onClick={handleCloseModal}
         >
+            <div
+    className={`fixed bg-black rounded overflow-hidden transition-all duration-700 ease-in-out 
+        ${miniReproductor
+            ? 'w-[245px] h-[145px] bottom-4 right-4 translate-x-0 translate-y-0'
+            : 'w-[calc(90vw-2rem)] max-w-[1000px] h-[500px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'}`}
+    onClick={e => e.stopPropagation()}
+>
+    {miniReproductor && (
+        <div
+            className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-2xl cursor-pointer transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+            onClick={() => setMiniReproductor(false)}
+        >
+            <FaExternalLinkAlt />
+        </div>
+    )}
+    {
+        miniReproductor && (
             <div 
-            className='w-[calc(90vw-2rem)] max-w-[1000px]'
-            onClick={e => e.stopPropagation()}
+            className='absolute top-1 right-2 text-2xl text-gray-400 font-bold opacity-0 transition-opacity duration-300 cursor-pointer group-hover:opacity-100'
+            onClick={() => setOpenTrailerModal(false)}
             >
-                {videoUrl ? (
-                    <iframe
-                        src={videoUrl}
-                        className='w-full h-[500px]'
-                        allow="autoplay; encrypted-media"
-                        allowFullScreen
-                        title="Trailer"
-                    ></iframe>
-                ) : (
-                    <p className="text-white text-center">Cargando tráiler...</p>
-                )}
+                x
             </div>
+        )
+    }
+    {videoUrl ? (
+        <ReactPlayer
+            url={videoUrl}
+            controls={true}
+            width="100%"
+            height="100%"
+            playing={true}
+        />
+    ) : (
+        <p className="text-white text-center">Cargando tráiler...</p>
+    )}
+</div>
         </div>
     );
 }

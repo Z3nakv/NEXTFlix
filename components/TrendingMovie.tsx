@@ -14,7 +14,6 @@ type trendingMovieProps = {
 }
 
 export default function TrendingMovie({ movie, image, title, index, showMovies }:  trendingMovieProps ) {
-  // const isFavorite = true;
   
   const genreIds = useMemo(() => movie.genre_ids, [movie.genre_ids]);
   const imageProps = useMemo(
@@ -37,6 +36,7 @@ export default function TrendingMovie({ movie, image, title, index, showMovies }
   const url = movie.poster_path || movie.backdrop_path || movie.still_path 
   ? `https://image.tmdb.org/t/p/${isPoster ? "original" : "w780"}${isPoster ? movie.poster_path : movie.backdrop_path ? movie.backdrop_path : movie.still_path}`
   : nextflixLogo.src
+  
   return (
     <div
       className={`cursor-pointer relative text-[#f2f2f2] overflow-hidden rounded-lg group contain ${imageStyles}`}

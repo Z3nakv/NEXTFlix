@@ -4,40 +4,40 @@ import { create } from "zustand";
 
 type backgroundIndexProps = {
     movies: movieProps[]
+    favoriteMovies: movieProps[]
     openModal: [boolean, movieProps]
     openTrailerModal: boolean
-    topRatedSeries: movieProps[]
-    topRatedMovies: movieProps[]
-    NEXTFlixOriginals: movieProps[]
-    actionMovies: movieProps[]
-    comedyMovies: movieProps[]
-    horrorMovies: movieProps[]
     backgroundIndex: string | 0
     genresMoviesSeries: genresProps[]
     setOpenModal: (value:boolean, movie:movieProps) => void
     setOpenTrailerModal: (value:boolean) => void
     setMovies: (m: movieProps[] | genresProps[], key: string) => void
     setBackgroundIndex: (index: string | null) => void
-    getData: (key:'movies' | 'topRatedMovies' | 'topRatedSeries' | 'NEXTFlixOriginals' | 'actionMovies' | 'comedyMovies' | 'horrorMovies' | 'romanceMovies' | 'documentaryMovies') => movieProps[]
+    getData: (key:'movies') => movieProps[]
     getGenreData: () => genresProps[]
+    setFavoriteMovies: (movies:movieProps) => void
+    setDeleteFavorite: (movieId:number) => void
 }
 
 export const usebackgroundIndex = create<backgroundIndexProps>((set, get) => ({
     movies: [],
+    favoriteMovies: [],
     openModal: [false, {} as movieProps],
     openTrailerModal: false,
-    topRatedSeries: [],
-    topRatedMovies: [],
-    NEXTFlixOriginals: [],
-    actionMovies: [],
-    comedyMovies: [],
-    horrorMovies: [],
-    romanceMovies: [],
-    documentaryMovies: [],
     backgroundIndex: '',
     genresMoviesSeries:[],
     setMovies: (movies, key) => {
         set((state) => ({ ...state, [key]: movies }));
+    },
+    setFavoriteMovies: (movie) => {
+        set((state) => ({
+            favoriteMovies: [...state.favoriteMovies, movie],
+        }));
+    },
+    setDeleteFavorite: (id) => {
+        set((state) => ({
+            favoriteMovies: state.favoriteMovies.filter(fav => fav.id !== id),
+        }))
     },
     setBackgroundIndex: (index) => {
         set({ backgroundIndex: index ? index : 0})

@@ -1,6 +1,6 @@
 export type movieProps = {
     backdrop_path: string
-    id: string
+    id: number
     original_title: string
     overview: string
     poster_path: string
@@ -19,6 +19,7 @@ export type movieProps = {
     first_air_date?: string
     seasons: object[]
     air_date?: string
+    genres: genresProps[]
 }
 
 export type popularProps =  {

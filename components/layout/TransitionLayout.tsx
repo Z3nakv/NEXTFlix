@@ -19,9 +19,9 @@ export default function TransitionLink({ children, href, ...props }: TransitionL
         e.preventDefault();
         const body = document.querySelector('body');
         body?.classList.add('page-transition');
-        await sleep(500);
+        await sleep(1000);
         router.push(href);
-        await sleep(500);
+        await sleep(1000);
         body?.classList.remove('page-transition');
 
     }

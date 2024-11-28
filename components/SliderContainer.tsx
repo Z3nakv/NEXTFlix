@@ -53,6 +53,8 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
                                     movie={trendingMovie}
                                     image={trendingMovie.backdrop_path ? trendingMovie.backdrop_path : trendingMovie.still_path}
                                     title={trendingMovie.title}
+                                    index={0}
+                                    showMovies={1}
                                 />
                         </SwiperSlide>
                     ))

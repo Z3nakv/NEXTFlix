@@ -5,7 +5,6 @@ import { FaPlay } from 'react-icons/fa';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import Genres from './Genres';
 import { useCallback } from 'react';
-import Link from 'next/link';
 import TransitionLink from './layout/TransitionLayout';
 
 type movieDataProps = {

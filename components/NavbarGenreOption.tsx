@@ -25,7 +25,7 @@ export default function NavbarGenreOption({setShowNavbar , setShowOptions} : {se
         return () => {
             document.removeEventListener("click", handleOutsideClick);
         };
-    }, []);
+    }, [handleOutsideClick]);
 
     return (
         <>

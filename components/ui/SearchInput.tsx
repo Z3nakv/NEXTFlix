@@ -62,7 +62,7 @@ export default function SearchInput() {
                 clearTimeout(debounceTimeout.current);
             }
         };
-    }, [searchTerm]);
+    }, [searchTerm, handleSearch]);
 
     // Resetear el valor del input al cambiar de página
     useEffect(() => {

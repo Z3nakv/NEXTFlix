@@ -2,10 +2,10 @@ import TrendingMovie from "@/components/TrendingMovie";
 import { movieProps } from "@/types";
 import { fetchTopRatedData } from "@/utils/fecthData";
 
-type SearchParams = { [key: string]: string | string[] | undefined }
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
 export default async function page({ searchParams }: { searchParams: SearchParams }) {
-    const { query } = searchParams;
+    const { query } = await searchParams;
     const response = await fetchTopRatedData('search/multi', `&query=${query}`);
     const movies: movieProps[] = response.results;
 

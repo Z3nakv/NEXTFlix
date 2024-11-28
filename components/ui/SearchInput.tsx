@@ -1,34 +1,25 @@
 'use client';
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
 export default function SearchInput() {
-    const searchParams = useSearchParams();
     const { replace } = useRouter();
     const formRef = useRef<HTMLFormElement>(null);
 
-    // Estado del input inicializado con el valor actual de los searchParams
-    const [searchTerm, setSearchTerm] = useState(searchParams?.get("query") || "");
+    const [searchTerm, setSearchTerm] = useState("");
     const [showInput, setShowInput] = useState(false);
     const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    // Realiza la búsqueda con debounce solo si el input cambia
+    // Actualiza la URL según el término de búsqueda
     const handleSearch = (search: string) => {
-        const params = new URLSearchParams(searchParams ? searchParams.toString() : "");
         if (search) {
-            params.set("query", search);
-        } else {
-            params.delete("query");
-        }
-
-        // Actualiza la URL solo si hay un cambio en el valor del input
-        if (search !== '') {
-            replace(`/search?${params.toString()}`);
+            replace(`/search?query=${search}`);
         }
     };
 
+    // Maneja el envío del formulario
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     };
@@ -47,7 +38,7 @@ export default function SearchInput() {
         };
     }, []);
 
-    // Actualiza la URL solo después de 300ms de inactividad al escribir
+    // Debounce: actualiza la URL solo después de 300ms de inactividad al escribir
     useEffect(() => {
         if (debounceTimeout.current) {
             clearTimeout(debounceTimeout.current);
@@ -62,12 +53,7 @@ export default function SearchInput() {
                 clearTimeout(debounceTimeout.current);
             }
         };
-    }, [searchTerm, handleSearch]);
-
-    // Resetear el valor del input al cambiar de página
-    useEffect(() => {
-        setSearchTerm(searchParams?.get("query") || "");
-    }, [searchParams]);
+    }, [searchTerm]);
 
     return (
         <form
@@ -84,8 +70,9 @@ export default function SearchInput() {
                 <FaSearch />
             </button>
             <div
-                className={`rounded-md border border-white transition-all duration-300 ease-in-out overflow-hidden absolute bottom-[-50px] right-0 ${showInput ? "w-[250px] opacity-100" : "w-0 opacity-0"
-                    }`}
+                className={`rounded-md border border-white transition-all duration-300 ease-in-out overflow-hidden absolute bottom-[-50px] right-0 ${
+                    showInput ? "w-[250px] opacity-100" : "w-0 opacity-0"
+                }`}
             >
                 <input
                     type="text"

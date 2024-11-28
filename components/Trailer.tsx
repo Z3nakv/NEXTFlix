@@ -6,6 +6,11 @@ import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { FaExternalLinkAlt } from "react-icons/fa";
 
+type videoProps = {
+    type: string
+    key: string
+}
+
 export default function Trailer() {
     const openTrailerModal = usebackgroundIndex((state) => state.openTrailerModal);
     const setOpenTrailerModal = usebackgroundIndex((state) => state.setOpenTrailerModal);
@@ -30,7 +35,8 @@ export default function Trailer() {
         async function requestTrailer() {
             try {
                 const response = await fetchTopRatedData(mediaUrl, '');
-                const trailerData = response?.results?.find(video => video.type === 'Trailer');
+                const videoData : videoProps[] = response?.results; 
+                const trailerData = videoData.find(video => video.type === 'Trailer');
                 if (trailerData) {
                     setVideoUrl(`https://www.youtube.com/embed/${trailerData.key}`);
                 } else {

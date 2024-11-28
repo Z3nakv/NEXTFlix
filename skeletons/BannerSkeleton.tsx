@@ -26,7 +26,7 @@ import ContentLoader from "react-content-loader"
 
 // )
 
-export const NetflixLoader = props => {
+export const NetflixLoader = () => {
   // Get values from props
   // const { rows, columns, coverHeight, coverWidth, padding, speed } = props;
 
@@ -51,7 +51,7 @@ export const NetflixLoader = props => {
       
       backgroundColor="#3d3d3d"
       foregroundColor="#e7dfdf"
-      {...props}
+  
     >
 
       {covers.map((g, i) => {
@@ -73,7 +73,7 @@ export const NetflixLoader = props => {
   )
 }
 
-export const MyDataLoader = (props) => (
+export const MyDataLoader = () => (
     <ContentLoader 
     speed={2}
     width={476}
@@ -81,7 +81,6 @@ export const MyDataLoader = (props) => (
     viewBox="0 0 476 200"
     backgroundColor="#3d3d3d"
     foregroundColor="#e7dfdf"
-    {...props}
   >
     <rect x="48" y="8" rx="3" ry="3" width="88" height="6" /> 
     <rect x="48" y="26" rx="3" ry="3" width="52" height="6" /> 
@@ -94,7 +93,7 @@ export const MyDataLoader = (props) => (
   </ContentLoader>
 )
 
-export const MyMovieLoader = (props) => (
+export const MyMovieLoader = () => (
   <ContentLoader 
     speed={2}
     width={'100%'}
@@ -102,7 +101,7 @@ export const MyMovieLoader = (props) => (
     viewBox="0 0 476 200"
     backgroundColor="#3d3d3d"
     foregroundColor="#e7dfdf"
-    {...props}
+  
   >
     <rect x="201" y="164" rx="0" ry="0" width="1" height="0" /> 
     <rect x="28" y="17" rx="0" ry="0" width="342" height="196" />
@@ -112,14 +111,13 @@ export const MyMovieLoader = (props) => (
   </ContentLoader>
 )
 
-export const Youtube = props => (
+export const Youtube = () => (
   <ContentLoader 
   // viewBox="0 0 900 507" 
   height={507} 
   width={'100%'} 
   backgroundColor="#3d3d3d"
   foregroundColor="#e7dfdf" 
-  {...props}
   >
     <rect x="50" y="60" rx="0" ry="0" width="330" height="180" />
     <rect x="400" y="60" rx="0" ry="0" width="330" height="180" />

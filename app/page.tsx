@@ -2,28 +2,14 @@
 import SectionLayout from "@/components/layout/SectionLayout";
 import Header from "@/pages/Home/Header";
 import { fetchTopRatedData } from "@/utils/fecthData";
-// import dynamic from "next/dynamic";
 import Link from "next/link";
 import { LazyRow } from "@/components/LazyRow";
 import { LazyHeader } from "@/components/LazyBanner";
-import TransitionLayout from "@/components/layout/TransitionLayout";
-
-// const DynamicRow = dynamic(() => import("@/components/Row"));
-// const DynamicLazyRow = dynamic(() => import("@/components/LazyRow"));
 
 export default async function HomePage() {
 
   const fetchConfigurations = [
     { path: 'trending/all/day', params: '' },
-    // { path: '/movie/upcoming', params: '' },
-    // { path: 'tv/top_rated', params: '' },
-    // { path: 'movie/top_rated', params: '' },
-    // { path: 'discover/tv', params: '&with_networks=213' },
-    // { path: 'discover/movie', params: '&with_genres=28' },
-    // { path: 'discover/movie', params: '&with_genres=35' },
-    // { path: 'discover/movie', params: '&with_genres=27' },
-    // { path: 'discover/movie', params: '&with_genres=10749' },
-    // { path: 'discover/movie', params: '&with_genres=99' },
   ];
 
   const [
@@ -34,15 +20,6 @@ export default async function HomePage() {
 
   const [
     popularNow,
-    // upcoming,
-    // topRatedSeries,
-    // topRatedMovies,
-    // NEXTFlixOriginals,
-    // action,
-    // comedy,
-    // horror,
-    // romance,
-    // documentary,
   ] = fetchedData;
 
   return (

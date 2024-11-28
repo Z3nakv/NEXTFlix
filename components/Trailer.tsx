@@ -47,7 +47,6 @@ export default function Trailer() {
     if (!openTrailerModal) return null;
 
     const handleCloseModal = () => {
-        // setOpenTrailerModal(false);
         setMiniReproductor(true);
     }
 

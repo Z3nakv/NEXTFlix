@@ -4,7 +4,6 @@ import { FaPlus, FaPlay, FaChevronDown, FaMinus } from "react-icons/fa";
 import Genres from "./Genres";
 import { movieProps } from "@/types";
 import { usebackgroundIndex } from "@/store";
-import { usePathname } from "next/navigation";
 import TransitionLink from "./layout/TransitionLayout";
 
 const MovieCardDetails = React.memo(function MovieCardDetails({

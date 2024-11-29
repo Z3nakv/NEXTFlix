@@ -19,48 +19,50 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NEXTFlix - Disfruta del mejor entretenimiento",
-  description: "Explora películas, series y contenido exclusivo con NEXTFlix. Una plataforma creada para los amantes del cine y la televisión, diseñada con tecnología moderna para ofrecerte una experiencia única.",
+  metadataBase: new URL('https://next-flix-kappa.vercel.app/'), // Cambia al dominio real de tu sitio
+  title: {
+    default: 'NEXTFlix: Disfruta de las Mejores Películas y Series en Línea',
+    template: '%s - NEXTFlix',
+  },
+  description:
+    'Explora un mundo de entretenimiento con NEXTFlix. Descubre los últimos estrenos, series populares y películas recomendadas. ¡Tu plataforma de streaming perfecta para disfrutar en familia!',
   keywords: [
-      // 'Streaming de Películas y Series',
-      // 'Entretenimiento Online',
-      // 'Descubre Nuevas Series',
-      // 'Trailers Exclusivos',
-      // 'Detalles de Películas',
-      // 'Plataforma de Series Populares',
-      // 'Cine en Línea',
-      // 'Últimos Estrenos',
-      // 'Películas para Familias',
-      // 'Series Imprescindibles',
-      // 'Explorar Películas',
-      // 'Películas Recomendada',
-      // 'Nuevas Series y Películas',
-      // 'Gemas Ocultas de Películas',
-      // 'Plataforma Interactiva de Streaming',
+    'Streaming de Películas y Series',
+    'Plataforma de Entretenimiento Online',
+    'Últimos Estrenos',
+    'Series Populares',
+    'Detalles de Películas',
+    'Recomendaciones de Cine',
+    'Trailers Exclusivos',
+    'Reseñas de Películas',
+    'Gemas Ocultas del Cine',
+    'Entretenimiento Interactivo',
   ],
   openGraph: {
-      title: 'NEXTFlix - Todo el cine y las series en un solo lugar',
-      images: '/public/page-image.png', // Reemplaza con el path real de tu imagen.
-      description:
-          "Encuentra los mejores estrenos, series y peliculas en NEXTFlix la plataforma de streaming para ti y tu familia!",
+    title: 'NEXTFlix: Todo el Cine y Series en un Solo Lugar',
+    images: '/public/page-image.png', // Cambia a la URL completa de tu imagen
+    description:
+      'Descubre las mejores películas, series y estrenos en NEXTFlix. Una plataforma hecha para disfrutar en familia, con una experiencia visual única.',
+    url: 'https://next-flix-kappa.vercel.app/', // Asegúrate de usar tu URL final
+    type: 'website',
   },
   referrer: 'origin-when-cross-origin',
   creator: 'Adrian Rivarola',
-  publisher: 'Adrian Rivarola',
+  publisher: 'NEXTFlix by Adrian Rivarola',
   robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
       index: true,
       follow: true,
-      nocache: false,
-      googleBot: {
-          index: true,
-          follow: true,
-          noimageindex: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-      },
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
-}
+};
 
 
 export default function RootLayout({

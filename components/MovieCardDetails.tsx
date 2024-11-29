@@ -24,9 +24,6 @@ const MovieCardDetails = React.memo(function MovieCardDetails({
     const setFavorites = usebackgroundIndex(state => state.setFavoriteMovies);
     const setDeleteFavorite = usebackgroundIndex(state => state.setDeleteFavorite);
 
-    const path = usePathname();
-    // const mediaInfo = path?.includes('mediaInfo');
-
     const handleOpenModal = useCallback(() => {
         setOpenModal(true, movie);
     }, [setOpenModal, movie]);

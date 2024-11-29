@@ -39,7 +39,7 @@ export function LazyRow({ title, path, params }: { title: string, path:string, p
         if (isVisible && movies?.length === 0) {
         const response = await fetchTopRatedData(path, params);
         
-        setMovies(response.results ? response.results : response.episodes ? response.episodes : response.cast)
+        setMovies(response?.results ? response?.results : response?.episodes ? response?.episodes : response?.cast)
         }
       }
       requestData()

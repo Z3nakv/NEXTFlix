@@ -42,7 +42,7 @@ export default function Footer() {
                     priority
                     />
                 <div className="absolute inset-0 bg-[#E50914] opacity-60 z-[-1]"></div>
-                    <h2 className="font-bold text-5xl mb-10">Develop with love by Adrian</h2>
+                    <h2 className="font-bold text-5xl mb-10">Developed with love by Adrian</h2>
                     <form className="flex items-center">
                         <label htmlFor="email" className="sr-only">Your Email Address</label>
                         <input

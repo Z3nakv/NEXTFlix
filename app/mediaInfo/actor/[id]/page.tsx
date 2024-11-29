@@ -24,8 +24,8 @@ export default async function page({ params,searchParams }: { params: Params, se
   return (
     <div>
       <div className="w-full flex justify-center items-center">
-        <div className="p-10 pb-0 flex flex-col gap-5 justify-center items-center mt-10 md:flex-row md:max-w-[1000px]">
-          <div className="relative h-[250px] w-[250px] object-cover rounded-full overflow-hidden md:flex-shrink-0">
+        <div className="p-10 pb-0 flex flex-col gap-5 lg:gap-32 justify-center lg:justify-between items-center mt-10 md:flex-row md:max-w-[1000px] lg:max-w-[1200px]">
+          <div className="relative h-[250px] w-[250px] lg:h-[300px] lg:w-[300px] object-cover rounded-full overflow-hidden md:flex-shrink-0">
             <Image
               src={`https://image.tmdb.org/t/p/w500${responseActor.profile_path}`}
               alt={responseActor.name}

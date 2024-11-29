@@ -53,13 +53,14 @@ export default function Trailer() {
     if (!openTrailerModal) return null;
 
     const handleCloseModal = () => {
-        setMiniReproductor(true);
+        setMiniReproductor(false);
+        setOpenTrailerModal(false)
     }
 
     return (
         <div
-            className={`fixed h-screen grid place-content-center w-full z-[100] inset-0 bg-black bg-opacity-40  ${miniReproductor ? 'h-0' : ''} group`}
-            onClick={handleCloseModal}
+            className={`fixed  grid place-content-center w-full z-[100] inset-0 bg-black bg-opacity-40  ${miniReproductor ? 'h-0' : 'h-screen'} group`}
+            onClick={() => setMiniReproductor(true)}
         >
             <div
     className={`fixed bg-black rounded overflow-hidden transition-all duration-700 ease-in-out 
@@ -80,7 +81,7 @@ export default function Trailer() {
         miniReproductor && (
             <div 
             className='absolute top-1 right-2 text-2xl text-gray-400 font-bold opacity-0 transition-opacity duration-300 cursor-pointer group-hover:opacity-100'
-            onClick={() => setOpenTrailerModal(false)}
+            onClick={handleCloseModal}
             >
                 x
             </div>

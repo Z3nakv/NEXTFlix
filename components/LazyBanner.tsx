@@ -3,7 +3,7 @@ import { movieProps } from "@/types";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-const DynamicHeader = dynamic(() => import("@/pages/Home/Header"),{ssr:false});
+const DynamicHeader = dynamic(() => import("@/components/Home/Header"),{ssr:false});
 
 export function LazyHeader({ title, path, params }: { title: string, path:string, params:string }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -34,12 +34,12 @@ export function LazyHeader({ title, path, params }: { title: string, path:string
 
   useEffect(() => {
     if (isVisible && movies.length === 0) {
-      fetch(`https://api.themoviedb.org/3/${path}?api_key=2a8e8430bbef22eac05ac10b009857ef&language=en-US&page=1${params}`)
+      fetch(`https://api.themoviedb.org/3/${path}?api_key=${process.env.NEXT_PUBLIC_API_KEY_2}&language=en-US&page=1${params}`)
         .then((response) => response.json())
-        .then((data) => setMovies(data.results || []))
+        .then((data) => setMovies(data?.results || []))
         .catch((err) => console.error("Error fetching movies:", err));
     }
-  }, [isVisible, path, params, movies.length]);
+  }, [isVisible, path, params, movies?.length]);
 
   return (
     <div ref={headerRef}>

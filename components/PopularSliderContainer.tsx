@@ -47,8 +47,8 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
             breakpoints={breakpoints}
             navigation
             modules={[Navigation, Autoplay]}
-            // autoplay={{ delay: 10000 }}
-            // loop={true}
+            autoplay={{ delay: 10000 }}
+            loop={true}
             onTransitionEnd={(swiper) => {
                 setBackgroundIndex(swiper.realIndex.toString());  // Actualiza el fondo solo al finalizar
             }}

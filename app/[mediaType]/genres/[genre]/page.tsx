@@ -1,6 +1,6 @@
 import SectionLayout from '@/components/layout/SectionLayout';
 import { LazyRow } from '@/components/LazyRow';
-import Header from '@/pages/Home/Header';
+import Header from '@/components/Home/Header';
 import { fetchTopRatedData } from '@/utils/fecthData'
 import Link from 'next/link';
 
@@ -25,7 +25,7 @@ export default async function page({ params, searchParams }: { params: Params, s
 
         <main className="h-full w-full relative">
             <section>
-                <Header movies={response.results} title={'Trending Now'} />
+                <Header movies={response?.results} title={'Trending Now'} />
             </section>
             <SectionLayout>
                 {

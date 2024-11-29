@@ -51,7 +51,7 @@ export default function TrendingMovie({ movie, image, title, index, showMovies }
         alt={movie.title || movie.name || "Movie Image"}
         height={isPoster ? 380 : 282}
         width={isPoster ? 250 : 500}
-        className="block object-cover rounded-lg"
+        className="block object-cover rounded-lg w-full h-full"
         {...imageProps}
       />
       {

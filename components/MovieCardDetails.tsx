@@ -25,7 +25,7 @@ const MovieCardDetails = React.memo(function MovieCardDetails({
     const setDeleteFavorite = usebackgroundIndex(state => state.setDeleteFavorite);
 
     const path = usePathname();
-    const mediaInfo = path?.includes('mediaInfo');
+    // const mediaInfo = path?.includes('mediaInfo');
 
     const handleOpenModal = useCallback(() => {
         setOpenModal(true, movie);
@@ -55,7 +55,7 @@ const MovieCardDetails = React.memo(function MovieCardDetails({
             }
             <div className="flex gap-3 md:gap-1">
                 {
-                    !mediaInfo ?
+                    !movie.episode_number ?
                         <TransitionLink
                             href={`/mediaInfo/${movie.id}-${mediaType}`}
                         >

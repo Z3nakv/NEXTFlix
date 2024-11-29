@@ -39,6 +39,7 @@ export function LazyHeader({ title, path, params }: { title: string, path:string
         .then((data) => setMovies(data?.results || []))
         .catch((err) => console.error("Error fetching movies:", err));
     }
+    
   }, [isVisible, path, params, movies?.length]);
 
   return (

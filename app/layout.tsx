@@ -42,11 +42,11 @@ export const metadata: Metadata = {
       title: 'NEXTFlix - Todo el cine y las series en un solo lugar',
       images: '/public/page-image.png', // Reemplaza con el path real de tu imagen.
       description:
-          '"Sumérgete en el mejor contenido audiovisual con NEXTFlix. Descubre los últimos estrenos, accede a trailers, detalles exclusivos y encuentra el próximo título que no te querrás perder. ¡El entretenimiento comienza aquí!"',
+          "Encuentra los mejores estrenos, series y peliculas en NEXTFlix la plataforma de streaming para ti y tu familia!",
   },
   referrer: 'origin-when-cross-origin',
-  creator: 'Adrián Rivarola',
-  publisher: 'Adrián Rivarola',
+  creator: 'Adrian Rivarola',
+  publisher: 'Adrian Rivarola',
   robots: {
       index: true,
       follow: true,
@@ -71,7 +71,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      {/* <link rel='icon' href='/favicon.ico' sizes='32x32' /> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable}select-none h-screen mx-auto antialiased overflow-x-hidden bg-[#141414] grid grid-cols-1`}

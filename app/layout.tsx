@@ -19,48 +19,49 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NEXTFlix",
-  description: "Disfruta de los mejores estrenos con NEXTFlix, una plataforma de streaming hecha para ti y tu familia, empieza ahora!",
+  title: "NEXTFlix - Disfruta del mejor entretenimiento",
+  description: "Explora películas, series y contenido exclusivo con NEXTFlix. Una plataforma creada para los amantes del cine y la televisión, diseñada con tecnología moderna para ofrecerte una experiencia única.",
   keywords: [
-    'Plataforma de Streaming',
-    'Películas y Series en Línea',
-    'Entretenimiento Audiovisual',
-    'Trailers de Películas',
-    'Detalles de Películas y Series',
-    'Base de Datos de Películas',
-    'Películas en línea',
-    'Últimos estrenos',
-    'Reseñas de películas',
-    'Experiencia Interactiva',
-    'Mejores Películas',
-    'Series Populares',
-    'Gemas Ocultas de Series',
-    'Descubre qué Ver',
-    'Trailers de películas',
-],
-openGraph: {
-    title: 'Flix: Explora, Descubre, Disfruta.',
-    images: '/og-image.png',
-    description:
-        '"Sumérgete en el fascinante universo del cine con Flix. Descubre los últimos estrenos, obtén reseñas y recomendaciones, y encuentra la mejor manera de disfrutar de tus películas favoritas. ¡Explora el cine como nunca antes con Flix!"',
-},
-referrer: 'origin-when-cross-origin',
-creator: 'Adrian Rivarola',
-publisher: 'Adrian Rivarola',
-robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-    },
-},
-};
+      'Streaming de Películas y Series',
+      'Entretenimiento Online',
+      'Descubre Nuevas Series',
+      'Trailers Exclusivos',
+      'Detalles de Películas',
+      'Plataforma de Series Populares',
+      'Cine en Línea',
+      'Últimos Estrenos',
+      'Películas para Familias',
+      'Series Imprescindibles',
+      'Explorar Películas',
+      'Películas Recomendada',
+      'Nuevas Series y Películas',
+      'Gemas Ocultas de Películas',
+      'Plataforma Interactiva de Streaming',
+  ],
+  openGraph: {
+      title: 'NEXTFlix - Todo el cine y las series en un solo lugar',
+      images: '/public/page-image.png', // Reemplaza con el path real de tu imagen.
+      description:
+          '"Sumérgete en el mejor contenido audiovisual con NEXTFlix. Descubre los últimos estrenos, accede a trailers, detalles exclusivos y encuentra el próximo título que no te querrás perder. ¡El entretenimiento comienza aquí!"',
+  },
+  referrer: 'origin-when-cross-origin',
+  creator: 'Adrián Rivarola',
+  publisher: 'Adrián Rivarola',
+  robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+          index: true,
+          follow: true,
+          noimageindex: false,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+      },
+  },
+}
+
 
 export default function RootLayout({
   children,

@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://next-flix-kappa.vercel.app/'), // Cambia al dominio real de tu sitio
+  metadataBase: new URL('https://next-flix-kappa.vercel.app/'),
   title: {
     default: 'NEXTFlix: Disfruta de las Mejores Películas y Series en Línea',
     template: '%s - NEXTFlix',
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'NEXTFlix: Todo el Cine y Series en un Solo Lugar',
-    images: '/public/page-image.png', // Cambia a la URL completa de tu imagen
+    images: '/public/page-image.png',
     description:
       'Descubre las mejores películas, series y estrenos en NEXTFlix. Una plataforma hecha para disfrutar en familia, con una experiencia visual única.',
-    url: 'https://next-flix-kappa.vercel.app/', // Asegúrate de usar tu URL final
+    url: 'https://next-flix-kappa.vercel.app/',
     type: 'website',
   },
   referrer: 'origin-when-cross-origin',

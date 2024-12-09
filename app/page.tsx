@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LazyRow } from "@/components/LazyRow";
 import { LazyHeader } from "@/components/home/LazyBanner";
 
+
 export default async function HomePage() {
 
   const fetchConfigurations = [

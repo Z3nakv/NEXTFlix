@@ -1,5 +1,5 @@
 import SectionLayout from "@/components/layout/SectionLayout";
-import PopularNow from "@/components/PopularNow";
+import PopularNow from "@/components/home/PopularNow";
 import TrendingMovie from "@/components/TrendingMovie";
 import { movieProps } from "@/types";
 import Image from "next/image";

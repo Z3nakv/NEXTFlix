@@ -3,8 +3,8 @@ import SectionLayout from "@/components/layout/SectionLayout";
 import { fetchTopRatedData } from "@/utils/fecthData";
 import Link from "next/link";
 import { LazyRow } from "@/components/LazyRow";
-import { LazyHeader } from "@/components/home/LazyBanner";
 import Header from "@/components/home/Header";
+import { LazyHeader } from "@/components/home/LazyBanner";
 
 
 export default async function HomePage() {

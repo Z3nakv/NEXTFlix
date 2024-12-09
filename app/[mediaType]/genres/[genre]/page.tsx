@@ -2,7 +2,6 @@
 import Header from '@/components/home/Header';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { LazyRow } from '@/components/LazyRow';
-
 import { fetchTopRatedData } from '@/utils/fecthData'
 import Link from 'next/link';
 

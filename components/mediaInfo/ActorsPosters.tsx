@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import profile from '../public/profile-placeholder.webp';
+import profile from '../../public/profile-placeholder.webp';
 import { actorPoster } from '@/types';
 
 type MovieImagesType = {

@@ -1,3 +1,4 @@
+
 import Header from '@/components/home/Header';
 import SectionLayout from '@/components/layout/SectionLayout';
 import { LazyRow } from '@/components/LazyRow';

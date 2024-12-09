@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import profile from '../public/profile-placeholder.webp';
+import profile from '../../public/profile-placeholder.webp';
 import { viewersReviews } from '@/types';
 
 type MovieImagesType = {

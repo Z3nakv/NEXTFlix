@@ -1,6 +1,6 @@
-
+'use client'
 import { movieProps } from "@/types";
-import PopularSliderContainer from "./PopularSliderContainer";
+import PopularSliderContainer from "@/components/home/PopularSliderContainer";
 
 type popularNowProps = {
     popularMovies: movieProps[],

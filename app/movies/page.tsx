@@ -1,8 +1,8 @@
 
 import SectionLayout from "@/components/layout/SectionLayout";
-import { LazyHeader } from "@/components/LazyBanner";
+import { LazyHeader } from "@/components/home/LazyBanner";
 import { LazyRow } from "@/components/LazyRow";
-import Header from "@/components/Home/Header";
+import Header from "@/components/home/Header";
 import { fetchTopRatedData } from "@/utils/fecthData";
 // import dynamic from "next/dynamic";
 import Link from "next/link";

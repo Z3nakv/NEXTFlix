@@ -4,6 +4,8 @@ import { usebackgroundIndex } from "@/store";
 import { movieProps } from "@/types";
 import Image from "next/image";
 
+
+
 export default function Banner({ movies, type } : { movies:movieProps[], type:string}) {
   
   const { backgroundIndex } = usebackgroundIndex();
@@ -19,11 +21,8 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
 
   return (
     
-      <div className={`absolute top-0 left-0 -z-10 h-full w-full`}>
+      <div className={`flex justify-center items-center absolute top-0 left-0 -z-10 h-full w-full`}>
         
-        {
-          backgroundImage &&
-              <>
                 <Image
                   src={`https://image.tmdb.org/t/p/original${backgroundImage?.backdrop_path}`}
                   alt={`${backgroundImage?.title || backgroundImage?.name}`}
@@ -31,6 +30,7 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                   height={1080}
                   width={1920}
                   className={'saturate-[1.2] scrollMove object-cover hidden md:block bg-no-repeat'}
+                  
                   style={{
                     height:'100%',
                     width:'100%',
@@ -52,8 +52,6 @@ export default function Banner({ movies, type } : { movies:movieProps[], type:st
                 }}
                 {...(isMobile && imageProps)}
                 />
-              </>
-        }
       </div>
 
     

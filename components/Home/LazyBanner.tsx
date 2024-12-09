@@ -3,7 +3,7 @@ import { movieProps } from "@/types";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-const DynamicHeader = dynamic(() => import("@/components/Home/Header"),{ssr:false});
+const DynamicHeader = dynamic(() => import("@/components/home/Header"),{ssr:false});
 
 export function LazyHeader({ title, path, params }: { title: string, path:string, params:string }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +44,12 @@ export function LazyHeader({ title, path, params }: { title: string, path:string
 
   return (
     <div ref={headerRef}>
-      {isVisible ? <DynamicHeader title={title} movies={movies} /> : null}
+      {
+      isVisible 
+      ? 
+      <DynamicHeader title={title} movies={movies} /> 
+      : null
+      }
     </div>
   );
 }

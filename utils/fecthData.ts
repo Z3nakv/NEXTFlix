@@ -10,7 +10,6 @@ export async function fetchTopRatedData(path: string, params:string) {
         },
         // cache: 'force-cache' as RequestCache
     };
-
     try {
         const response = await fetch(url, options);
         const result = await response.json()

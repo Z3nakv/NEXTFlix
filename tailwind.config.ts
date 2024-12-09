@@ -41,6 +41,10 @@ const config: Config = {
                     'linear-gradient(180deg, rgba(0,0,0,0.5914740896358543) 0%, rgba(0,0,0,0) 34%)',
                 'footerGradiant':
                     'linear-gradient(180deg,#0000,oklch(61.64% 0.111 222.57 / 23.53%))',
+                'arrowShadowLeft' :
+                    'linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 70%)',
+                'arrowShadowRight':
+                    'linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 70%)',
             },
             colors: {
                 background: "var(--background)",
@@ -87,20 +91,20 @@ const config: Config = {
                         opacity: '1',
                     }
                 },
-                // dataFadeInDown: {
-                //     '100%': {
-                //         opacity: '1',
-                //     },
-                //     '0%': {
-                //         opacity: '0',
-                //         transform: 'translateY(10%)'
-                //     }
-                // },
+                bgFade: {
+                    '0%': {
+                        opacity: '1',
+                    },
+                    '100%': {
+                        opacity: '0',
+                    }
+                },
             },
             animation: {
                 fadeInUp: 'fadeInUp 700ms ease-in-out forwards',
                 dataFadeInUp: 'dataFadeInUp 500ms ease-in-out forwards',
                 dataFadeInDown: 'fadeInUp 500ms ease-in-out reverse forwards',
+                bgFade: 'bgFade 500ms ease-in-out forwards'
             },
         },
     },

@@ -19,27 +19,27 @@ export default function TrendingMovie({ movie, image, title, index, showMovies }
   const imageProps = useMemo(
     () =>
       (title === "Trending Now" || movie.air_date) && index+1 <= showMovies
-        ? { priority: true as const }
+        ? { priority: true as const, loading: 'eager' as const }
         : { loading: "lazy" as const },
     [title, index, showMovies, movie.air_date]
   );
 
   const imageStyles = useMemo(() => {
     if (movie.poster_path === image) {
-      return "w-auto";
+      return "w-auto h-auto aspect-[9/14]";
     }
-    return "xs:w-[calc(100vw-3.5rem)] sm:w-[calc(55vw-4.5rem)] md:w-[calc(34vw-3.2rem)] xl:w-[calc(25vw-2.5rem)]";
+    return "xs:w-[calc(100vw-3.5rem)] sm:w-[calc(55vw-4.5rem)] md:w-[calc(34vw-3.2rem)] xl:w-[calc(25vw-2.5rem)] h-full";
   }, [movie.poster_path, image]);
 
   const isPoster = useMemo(() => movie.poster_path === image, [movie.poster_path, image]);
 
   const url = movie.poster_path || movie.backdrop_path || movie.still_path 
-  ? `https://image.tmdb.org/t/p/${isPoster ? "original" : "w780"}${isPoster ? movie.poster_path : movie.backdrop_path ? movie.backdrop_path : movie.still_path}`
+  ? `https://image.tmdb.org/t/p/${isPoster ? "w342" : "w780"}${isPoster ? movie.poster_path : movie.backdrop_path ? movie.backdrop_path : movie.still_path}`
   : nextflixLogo.src
   
   return (
     <div
-      className={`cursor-pointer relative text-[#f2f2f2] overflow-hidden rounded-lg group contain ${imageStyles}`}
+      className={`cursor-pointer relative text-[#f2f2f2] overflow-hidden rounded-lg group contain ${imageStyles} ${isPoster ? 'aspect-[9/14]' : ''}`}
       aria-label={`Movie: ${movie.title || movie.original_name || movie.name}`}
     >
       <div
@@ -51,7 +51,7 @@ export default function TrendingMovie({ movie, image, title, index, showMovies }
         alt={movie.title || movie.name || "Movie Image"}
         height={isPoster ? 380 : 282}
         width={isPoster ? 250 : 500}
-        className="block object-cover rounded-lg w-full h-full"
+        className={`block object-cover rounded-lg h-full ${isPoster ? 'aspect-[9/14]' : ''}`}
         {...imageProps}
       />
       {

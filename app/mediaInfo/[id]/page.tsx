@@ -6,10 +6,10 @@ import Image from "next/image";
 import { FaPlay, FaStar } from "react-icons/fa";
 import { IoTimeOutline } from "react-icons/io5";
 import OpenTrailerButton from "@/components/ui/OpenTrailerButton";
-import SeasonSelect from "@/components/SelectSeasons";
-import MovieImages from "@/components/MovieImages";
-import ActorsPosters from "@/components/ActorsPosters";
-import ViewersReviews from "@/components/ViewersReviews";
+import SeasonSelect from "@/components/mediaInfo/SelectSeasons";
+import MovieImages from "@/components/mediaInfo/MovieImages";
+import ActorsPosters from "@/components/mediaInfo/ActorsPosters";
+import ViewersReviews from "@/components/mediaInfo/ViewersReviews";
 import { fetchTopRatedData } from "@/utils/fecthData";
 import { Suspense } from "react";
 

@@ -1,11 +1,13 @@
 'use client'
-import { Youtube } from "@/skeletons/BannerSkeleton";
+import { MovieHorizontalSkeleton } from "@/skeletons/BannerSkeleton";
 import { movieProps } from "@/types";
 import { fetchTopRatedData } from "@/utils/fecthData";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-const DynamicRow = dynamic(() => import("@/components/Row"),{ssr:false, loading:() => <Youtube />});
+const DynamicRow = dynamic(() => import("@/components/Row"),
+{ssr:false, loading:() => <MovieHorizontalSkeleton />}
+);
 
 export function LazyRow({ title, path, params }: { title: string, path:string, params:string }) {
   const [isVisible, setIsVisible] = useState(false);

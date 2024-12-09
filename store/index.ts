@@ -7,7 +7,7 @@ type backgroundIndexProps = {
     favoriteMovies: movieProps[]
     openModal: [boolean, movieProps]
     openTrailerModal: boolean
-    backgroundIndex: string | 0
+    backgroundIndex: string
     genresMoviesSeries: genresProps[]
     setOpenModal: (value:boolean, movie:movieProps) => void
     setOpenTrailerModal: (value:boolean) => void
@@ -24,7 +24,7 @@ export const usebackgroundIndex = create<backgroundIndexProps>((set, get) => ({
     favoriteMovies: [],
     openModal: [false, {} as movieProps],
     openTrailerModal: false,
-    backgroundIndex: '',
+    backgroundIndex: '0',
     genresMoviesSeries:[],
     setMovies: (movies, key) => {
         set((state) => ({ ...state, [key]: movies }));
@@ -40,7 +40,7 @@ export const usebackgroundIndex = create<backgroundIndexProps>((set, get) => ({
         }))
     },
     setBackgroundIndex: (index) => {
-        set({ backgroundIndex: index ? index : 0})
+        set({ backgroundIndex: index ? index : '0'})
     },
     setOpenModal: (value: boolean, movie: movieProps) => {
         set({

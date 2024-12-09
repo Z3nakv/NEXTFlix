@@ -10,6 +10,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 
 export default function SliderContainer({ movies }: { movies: movieProps[] }) {
     const { screenWidth } = useWindowSize();
+    
     const breakpoints = {
         300: { slidesPerView: 1, spaceBetween: 10 },
         600: { slidesPerView: 2, spaceBetween: 10 },
@@ -26,17 +27,17 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
         if (screenWidth >= 1024) return 12
         return 10
     }, [screenWidth])
-    // console.log(movies);
     
     return (
         <div>
             <Swiper
                 slidesPerView={2}
                 breakpoints={breakpoints}
-                navigation
+                navigation={{
+                    nextEl: '.swiper-button-horizontal-next',
+                    prevEl: '.swiper-button-horizontal-prev',
+                }}
                 modules={[Navigation, Autoplay]}
-                // autoplay={{ delay: 2000 }}
-                // loop={true}
                 className="transition !duration-300 !overflow-visible"
                 
             >
@@ -46,7 +47,7 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
                         
                         <SwiperSlide
                             key={trendingMovie.id}
-                            className={`!transition !duration-300 overflow-hidden !w-auto mr-2.5`}
+                            className={`!transition !duration-300 overflow-hidden !h-auto !w-auto mr-2.5`}
                         >
                                 <TrendingMovie
                                     key={trendingMovie.id}
@@ -59,6 +60,23 @@ export default function SliderContainer({ movies }: { movies: movieProps[] }) {
                         </SwiperSlide>
                     ))
                 }
+
+                <div 
+                className="absolute left-[-15px] md:left-[-48px] top-[50%] translate-y-[-50%] z-50 cursor-pointer h-full w-[100px] flex justify-start items-center bg-arrowShadowLeft
+                            transition duration-300 opacity-0 hover:opacity-100">
+                    <div
+                    className="swiper-button-horizontal-prev text-[50px] text-white font-bold pl-2">
+                        {'<'}
+                    </div>
+                </div>
+                <div 
+                className="absolute right-[-15px] md:right-[-48px] top-[50%] translate-y-[-50%] z-50 cursor-pointer h-full w-[100px] flex justify-end items-center bg-arrowShadowRight
+                            transition duration-300 opacity-0 hover:opacity-100">
+                    <div
+                    className="swiper-button-horizontal-next text-[50px] text-white font-bold pr-2">
+                        {'>'}
+                    </div>
+                </div>
             </Swiper>
         </div>
     )

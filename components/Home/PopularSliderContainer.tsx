@@ -4,14 +4,15 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { movieProps } from "@/types";
-import TrendingMovie from "./TrendingMovie";
+import TrendingMovie from "@/components/TrendingMovie";
 import { usebackgroundIndex } from "@/store";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useWindowSize from "@/hooks/useWindowSize";
 
-export default function PopularSliderContainer({ popularMovies, title }: { popularMovies: movieProps[], title:string}) {
+export default function PopularSliderContainer({ popularMovies, title }: { popularMovies: movieProps[], title: string }) {
     const { screenWidth } = useWindowSize();
-    const { setBackgroundIndex } = usebackgroundIndex()
+    const setBackgroundIndex = usebackgroundIndex(state => state.setBackgroundIndex);
+    const [swiperReady, setSwiperReady] = useState(false);
 
     const showMovies = useMemo(() => {
         if (screenWidth >= 1800) return 20
@@ -28,7 +29,7 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
         if (screenWidth >= 600) return 4;
         return 3;
     }, [screenWidth]);
-    
+
     const breakpoints = {
         300: { slidesPerView: 2, spaceBetween: 10 },
         600: { slidesPerView: 3, spaceBetween: 10 },
@@ -41,36 +42,36 @@ export default function PopularSliderContainer({ popularMovies, title }: { popul
     
     return (
         <Swiper
-            observer={true}
-            observeParents={true}
             slidesPerView={2}
             breakpoints={breakpoints}
             navigation
             modules={[Navigation, Autoplay]}
-            autoplay={{ delay: 10000 }}
+            // autoplay={{ delay: 10000 }}
             loop={true}
             onTransitionEnd={(swiper) => {
                 setBackgroundIndex(swiper.realIndex.toString());  // Actualiza el fondo solo al finalizar
             }}
-            className="relative !overflow-visible transition mySwiper w-full"
+            onSwiper={() => setSwiperReady(true)}
+            className="relative !overflow-visible h-full"
         >
             {
-                    popularMovies &&
+                swiperReady ?
                     popularMovies?.slice(0, showMovies).map((trendingMovie, index) => (
                         <SwiperSlide
                             key={trendingMovie.id}
-                            className={`!transition !duration-300`}
+                            className={`!transition !duration-300 mr-2.5 !aspect-[9/14]`}
                         >
-                                <TrendingMovie
-                                    key={trendingMovie.id}
-                                    movie={trendingMovie}
-                                    image={trendingMovie.poster_path}
-                                    title={title}
-                                    index={index}
-                                    showMovies={lazyMovies}
-                                />
+                            <TrendingMovie
+                                key={trendingMovie.id}
+                                movie={trendingMovie}
+                                image={trendingMovie.poster_path}
+                                title={title}
+                                index={index}
+                                showMovies={lazyMovies}
+                            />
                         </SwiperSlide>
                     ))
+                : null
             }
         </Swiper>
     )

@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import MovieCardModal from "@/components/modal/MovieCardModal";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import "./globals.css";
 import Trailer from "@/components/Trailer";
+import "./globals.css";
 
 
 const geistSans = localFont({

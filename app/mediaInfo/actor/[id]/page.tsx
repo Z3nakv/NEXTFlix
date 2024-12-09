@@ -82,6 +82,7 @@ export default async function page({ params,searchParams }: { params: Params, se
           aria-label="Navegar a la sección de películas"
           className="text-white font-bold border-2 border-white px-6 py-3 rounded-lg transition duration-400 hover:bg-white hover:text-black"
           passHref
+          scroll={false}
         >
           ver mas
         </Link>

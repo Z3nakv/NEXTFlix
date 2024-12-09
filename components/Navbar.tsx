@@ -5,7 +5,6 @@ import TransitionLink from "./layout/TransitionLayout";
 import Image from "next/image";
 import NavbarLayout from "./layout/NavbarLayout";
 
-
 export default function Navbar() {
 
   return (

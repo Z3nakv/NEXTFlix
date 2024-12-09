@@ -43,7 +43,7 @@ const MovieCardDetails = React.memo(function MovieCardDetails({
     
     return (
         <div
-            className="transition duration-300 opacity-0 absolute bottom-0 left-4 group-hover:translate-y-[-30px] contain group-hover:opacity-100 sm:group-hover:translate-y-[-10px]"
+            className={`transition duration-300 opacity-0 absolute bottom-4 left-3 group-hover:translate-y-[0px] contain group-hover:opacity-100 sm:group-hover:translate-y-[0px] ${!isPoster ? 'sm:group-hover:translate-y-[10px]' : ''}`}
         >
             {
                 movie.still_path &&

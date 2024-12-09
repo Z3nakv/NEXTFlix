@@ -1,10 +1,10 @@
 
 import SectionLayout from "@/components/layout/SectionLayout";
-import Header from "@/components/Home/Header";
+import Header from "@/components/home/Header";
 import { fetchTopRatedData } from "@/utils/fecthData";
 import Link from "next/link";
 import { LazyRow } from "@/components/LazyRow";
-import { LazyHeader } from "@/components/LazyBanner";
+import { LazyHeader } from "@/components/home/LazyBanner";
 
 export default async function HomePage() {
 

@@ -1,11 +1,11 @@
 
 import SectionLayout from "@/components/layout/SectionLayout";
-import { LazyHeader } from "@/components/home/LazyBanner";
 import { LazyRow } from "@/components/LazyRow";
-import Header from "@/components/home/Header";
 import { fetchTopRatedData } from "@/utils/fecthData";
 // import dynamic from "next/dynamic";
 import Link from "next/link";
+import { LazyHeader } from "@/components/home/LazyBanner";
+import Header from "@/components/home/Header";
 
 // const DynamicRow = dynamic(() => import("@/components/Row"))
 
